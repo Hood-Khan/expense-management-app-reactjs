@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
-import Navbar from './components/Navbar'
-import { Route, Router, Routes } from 'react-router-dom'
+import React from "react";
+import Navbar from "./components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import AddExpense from "./components/AddExpense";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true);
+  // const [isOpen, setIsOpen] = useState(true);
 
-console.log(!isOpen); // false
-console.log(isOpen);  // true
-let id = Date.now();
-console.log(id);  // true
+  // console.log(!isOpen); // false
+  // console.log(isOpen);  // true
+  // let id = Date.now();
+  // console.log(id);  // true
+
   return (
-    <div>
+    <div className="bg-gray-200 min-h-screen pb-10">
       <Navbar />
       {/* <div>app comp</div> */}
       <Routes>
@@ -18,8 +20,12 @@ console.log(id);  // true
         <Route path="/about" element={<div>About Page</div>} />
         <Route path="/contact" element={<div>Contact Page</div>} />
       </Routes>
+
+      <div className="w-[80%] mx-auto">
+        <AddExpense />
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

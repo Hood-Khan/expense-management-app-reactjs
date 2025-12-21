@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <header className="bg-indigo-600">
+    <header className="bg-blue-600">
       <nav className="w-[80%] text-white flex justify-between items-center mx-auto p-4 rounded-md">
         <div>
           <h1 className="font-bold text-2xl">Expense Tracker</h1>
