@@ -4,8 +4,33 @@ function AddExpense() {
   const [isShown, setIsShown] = useState(true);
 
   const onhandleSubmit = (e) => {
-    e.preventDefault();
+    try{
+      e.preventDefault();
     console.log("form submitted");
+
+    const formData = new FormData(event.target);
+    const price = formData.get("price") || 0;
+    const description = formData.get("description") || "";
+    const purpose = formData.get("purpose") || "";
+
+      if(!price<=0 || !description || !purpose){
+        alert("please fill all details properly");
+        return
+      }
+
+      const exp = {
+        price,
+        description,
+        purpose,
+        created_at:new Date(),
+        id:Date.now()
+      }
+
+    }catch(err){
+      console.log("Error in form submit", err);
+    }
+
+
   }
 
   return (
