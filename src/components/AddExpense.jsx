@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { mainContext } from '../context/MainContext';
 
 function AddExpense() {
   const [isShown, setIsShown] = useState(true);
 
-  const onhandleSubmit = (e) => {
+  const {allExpense,setAllExpense} = useContext(mainContext);
+  // console.log("data in add expense", allExpense);
+
+  const onhandleSubmit = (event) => {
     try{
-      e.preventDefault();
+      event.preventDefault();
     console.log("form submitted");
 
     const formData = new FormData(event.target);
@@ -13,7 +17,7 @@ function AddExpense() {
     const description = formData.get("description") || "";
     const purpose = formData.get("purpose") || "";
 
-      if(!price<=0 || !description || !purpose){
+      if(price<=0 || !description || !purpose){
         alert("please fill all details properly");
         return
       }
@@ -25,6 +29,11 @@ function AddExpense() {
         created_at:new Date(),
         id:Date.now()
       }
+
+      setAllExpense([...allExpense, exp])
+
+      alert('expense added successfully');
+      event.target.reset()
 
     }catch(err){
       console.log("Error in form submit", err);
@@ -64,6 +73,7 @@ function AddExpense() {
             name="price"
             placeholder="Enter amount"
             className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
           />
         </div>
 
@@ -78,6 +88,7 @@ function AddExpense() {
             rows="3"
             placeholder="Enter description"
             className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
           ></textarea>
         </div>
 
@@ -90,6 +101,7 @@ function AddExpense() {
             name="purpose"
             id="purpose"
             className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
           >
             <option value="expense">Expense</option>
             <option value="income">Income</option>
