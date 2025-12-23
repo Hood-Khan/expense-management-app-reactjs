@@ -4,7 +4,13 @@
   function AllExpense() {
 
     const {allExpense} = useContext(mainContext);
-    console.log(allExpense);
+    // console.log(allExpense);
+    const totalMoney = allExpense.length>2 ? (
+      allExpense.reduce((prev,cur)=>{
+        return prev+parseInt(cur.price)
+      },0)
+    ) : allExpense.length==1 ? allExpense[0].price 
+    : 0;
 
     const calMoney = (purpose) => {
       
@@ -32,7 +38,7 @@
               Income
             </p>
             <p className="text-green-700 font-bold text-2xl text-right mt-2">
-              {calMoney('income') || 0}
+              Rs. {calMoney('Income') || 0}
             </p>
           </div>
 
@@ -42,7 +48,17 @@
               Expense
             </p>
             <p className="text-red-700 font-bold text-2xl text-right mt-2">
-              {calMoney('expense') || 0}
+              Rs. {calMoney('Expense') || 0}
+            </p>
+          </div>
+
+          {/* Total Card */}
+          <div className="col-span-2 bg-blue-50 border border-blue-200 rounded-xl shadow-md p-6 hover:shadow-lg transition">
+            <p className="text-blue-700 text-lg font-bold uppercase tracking-wide">
+              Total Balance
+            </p>
+            <p className="text-blue-700 font-bold text-2xl text-right mt-2">
+              Rs. {totalMoney}
             </p>
           </div>
 
