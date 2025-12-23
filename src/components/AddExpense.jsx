@@ -34,6 +34,7 @@ function AddExpense() {
 
       alert('expense added successfully');
       event.target.reset()
+      setIsShown(true)
 
     }catch(err){
       console.log("Error in form submit", err);

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import AddExpense from "./components/AddExpense";
 import AllExpense from "./components/AllExpense";
+import ListExpense from "./components/ListExpense";
 
 function App() {
   // const [isOpen, setIsOpen] = useState(true);
@@ -25,6 +26,7 @@ function App() {
       <div className="w-[80%] mx-auto">
         <AddExpense />
         <AllExpense />
+        <ListExpense />
       </div>
     </div>
   );
