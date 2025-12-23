@@ -4,14 +4,14 @@
   function AllExpense() {
 
     const {allExpense} = useContext(mainContext);
-    // console.log(data);
+    console.log(allExpense);
 
     const calMoney = (purpose) => {
       
       if(allExpense.length<=0){
         return 0;
       }
-      const expenses = allExpense.filter((cur,i)=>
+      const expenses = allExpense.filter((cur)=>
         cur.purpose==purpose
       ).map((cur)=>parseInt(cur.price))
       if(expenses.length<=1){

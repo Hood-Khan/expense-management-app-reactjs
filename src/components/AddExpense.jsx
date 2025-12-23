@@ -104,8 +104,8 @@ function AddExpense() {
             className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             required
           >
-            <option value="expense">Expense</option>
-            <option value="income">Income</option>
+            <option value="Expense">Expense</option>
+            <option value="Income">Income</option>
           </select>
         </div>
 
