@@ -4,7 +4,7 @@ export const mainContext = createContext();
 
 export const MainContext = ({ children }) => {
   // const [allExpense, setAllExpense] = useState([]);
-  const [allExpense, setAllExpense] = useState(JSON.parse(localStorage.getItem("expense")) || '[]');
+  const [allExpense, setAllExpense] = useState(JSON.parse(localStorage.getItem("expense")) || []);
 
   return (
     <mainContext.Provider value={{ allExpense, setAllExpense }}>

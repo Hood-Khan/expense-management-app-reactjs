@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { mainContext } from "../context/MainContext";
 import Swal from "sweetalert2";
+import UpdateExpense from "./UpdateExpense";
 
 function ExpenseCard({ data, no }) {
   const { allExpense, setAllExpense } = useContext(mainContext);
@@ -66,20 +67,31 @@ function ExpenseCard({ data, no }) {
             </span>
           )}
         </td>
-        <td className="border border-gray-500 text-zinc-800 py-3 px-3 gap-1 flex">
+        {/* <td className="border border-gray-500 text-zinc-800 py-3 px-3 gap-1 flex">
+
           <button
             className="bg-red-600 text-white rounded text-center cursor-pointer hover:bg-red-700 transition py-1 px-3"
             onClick={deleteExpense}
           >
             Delete
           </button>
-          <button
-            className="bg-amber-600 text-white rounded text-center cursor-pointer hover:bg-amber-700 transition py-1 px-3"
-            onClick={deleteExpense}
-          >
-            Update
-          </button>
-        </td>
+
+          <UpdateExpense data={data} />
+        </td> */}
+
+        <td className="border border-gray-500 text-zinc-800 py-3 px-3">
+  <div className="flex gap-2 justify-start">
+    <button
+      className="bg-red-600 text-white rounded text-center cursor-pointer hover:bg-red-700 transition py-1 px-3"
+      onClick={deleteExpense}
+    >
+      Delete
+    </button>
+
+    <UpdateExpense data={data} />
+  </div>
+</td>
+
       </tr>
     </>
   );

@@ -5,7 +5,7 @@
 
     const {allExpense} = useContext(mainContext);
     // console.log(allExpense);
-    const totalMoney = allExpense.length>2 ? (
+    const totalMoney = allExpense.length>=2 ? (
       allExpense.reduce((prev,cur)=>{
         return prev+parseInt(cur.price)
       },0)
@@ -33,7 +33,7 @@
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
           {/* Income Card */}
-          <div className="w-[96%] lg:w-[80%] mx-auto bg-green-50 border border-green-200 rounded-xl shadow-md p-6 hover:shadow-lg transition">
+          <div className="w-[96%] lg:w-[94%] bg-green-50 border border-green-200 rounded-xl shadow-md p-6 hover:shadow-lg transition">
             <p className="text-green-700 text-lg font-bold uppercase tracking-wide">
               Income
             </p>
@@ -43,7 +43,7 @@
           </div>
 
           {/* Expense Card */}
-          <div className="w-[96%] lg:w-[80%] mx-auto bg-red-50 border border-red-200 rounded-xl shadow-md p-6 hover:shadow-lg transition">
+          <div className="w-[96%] lg:w-[94%] sm:justify-self-end bg-red-50 border border-red-200 rounded-xl shadow-md p-6 hover:shadow-lg transition">
             <p className="text-red-700 text-lg font-bold uppercase tracking-wide">
               Expense
             </p>
