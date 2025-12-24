@@ -31,7 +31,13 @@ function AddExpense() {
         id: Date.now(),
       };
 
-      setAllExpense([...allExpense, exp]);
+      // setAllExpense([...allExpense, exp]);
+
+      // local storage data setup
+      const newExpense = [...allExpense,exp];
+      console.log(newExpense);
+      localStorage.setItem('expense', JSON.stringify(newExpense));
+      setAllExpense(newExpense);
 
       // alert('expense added successfully');
       // Swal.fire({

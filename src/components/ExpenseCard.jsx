@@ -6,8 +6,8 @@ function ExpenseCard({ data, no }) {
   const { allExpense, setAllExpense } = useContext(mainContext);
 
   const deleteExpense = () => {
-    const newExpense = allExpense.filter((cur) => cur.id != data.id);
-    setAllExpense(newExpense);
+    // const newExpense = allExpense.filter((cur) => cur.id != data.id);
+    // setAllExpense(newExpense);
     // Swal.fire({
     //   icon: "success",
     //   title: "Deleted!",
@@ -27,6 +27,11 @@ function ExpenseCard({ data, no }) {
       if (result.isConfirmed) {
         // delete logic here
 
+        const newExpense = allExpense.filter((cur) => cur.id != data.id);
+        setAllExpense(newExpense);
+    
+        localStorage.setItem('expense', JSON.stringify(newExpense));
+        
         Swal.fire("Deleted!", "Your expense has been deleted.", "success");
         //   Swal.fire({
         //   icon: "success",
@@ -37,6 +42,7 @@ function ExpenseCard({ data, no }) {
         // });
       }
     });
+
   };
   return (
     <>
@@ -60,12 +66,18 @@ function ExpenseCard({ data, no }) {
             </span>
           )}
         </td>
-        <td className="border border-gray-500 text-zinc-800 py-3 px-3 ">
+        <td className="border border-gray-500 text-zinc-800 py-3 px-3 gap-1 flex">
           <button
             className="bg-red-600 text-white rounded text-center cursor-pointer hover:bg-red-700 transition py-1 px-3"
             onClick={deleteExpense}
           >
             Delete
+          </button>
+          <button
+            className="bg-amber-600 text-white rounded text-center cursor-pointer hover:bg-amber-700 transition py-1 px-3"
+            onClick={deleteExpense}
+          >
+            Update
           </button>
         </td>
       </tr>
